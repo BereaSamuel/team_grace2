@@ -23,7 +23,7 @@
         </h3>
       </div>
       <div class="container_input">
-        <form>
+        <form id="form">
           <div class="input_group">
             <label>First Name</label>
             <input
@@ -94,8 +94,9 @@
             <label>Text your Message</label>
             <textarea rows="10" placeholder="write your text here"></textarea>
           </div>
-          <button onclick="return validateForm()">Submit</button>
+          <button id="submit" type="submit">Submit</button>
           <span id="submit_error"></span>
+          <div style="display: none" id="popup">thank you</div>
         </form>
       </div>
     </div>

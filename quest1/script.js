@@ -3,7 +3,9 @@ const lastError = document.getElementById("lastname_error");
 const emailError = document.getElementById("email_error");
 const phoneError = document.getElementById("phone_error");
 const submitError = document.getElementById("submit_error");
+const form = document.getElementById("form");
 // First name
+
 function validateFirstName() {
   let displayfirstName = document.getElementById("firstname").value;
   if (displayfirstName.length == 0) {
@@ -69,12 +71,16 @@ function validateEmail() {
 }
 
 // validation form
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  validateForm();
+});
 function validateForm() {
   if (
-    validateFirstName() ||
-    validateLastName() ||
-    validateEmail() ||
-    validatePhone()
+    !validateFirstName() ||
+    !validateLastName() ||
+    !validateEmail() ||
+    !validatePhone()
   ) {
     submitError.style.display = "block";
     submitError.innerHTML = "Please fix the error to submit";
@@ -83,6 +89,7 @@ function validateForm() {
     }, 2000);
     return false;
   } else {
-    alert("Thank You");
+    // alert("thn'x");
+    document.getElementById("popup").style.display = "inline-block";
   }
 }
