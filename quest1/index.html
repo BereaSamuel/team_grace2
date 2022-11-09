@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CUSTOMER SATISFACTION ASSESSMENT QUESTIONNAIRE</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/2b5a6d05cb.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container_text">
+        <h1>CUSTOMER SATISFACTION ASSESSMENT QUESTIONNAIRE</h1>
+        <h3>
+          In order to improve the work of our institution, please complete this
+          questionnaire. We assure you that the information you provide in this
+          questionnaire is confidential and will only be used to improve our
+          services.
+        </h3>
+      </div>
+      <div class="container_input">
+        <form id="form">
+          <div class="input_group">
+            <label>First Name</label>
+            <input
+              type="text"
+              placeholder="Write your first name"
+              id="firstname"
+              onkeyup="validateFirstName()"
+            />
+            <span id="firstname_error"></span>
+          </div>
+          <div class="input_group">
+            <label>Last Name</label>
+            <input
+              type="text"
+              placeholder="Write your last name"
+              id="lastname"
+              onkeyup="validateLastName()"
+            />
+            <span id="lastname_error"></span>
+          </div>
+          <div class="input_group">
+            <label>E-mail</label>
+            <input
+              type="text"
+              placeholder="Write your E-mail"
+              id="emailadress"
+              onkeyup="validateEmail()"
+            />
+            <span id="email_error"></span>
+          </div>
+          <div class="input_group">
+            <label>Phone Number</label>
+            <input
+              type="text"
+              placeholder="Write your phone number"
+              id="phonenumber"
+              onkeyup="validatePhone()"
+            />
+            <span id="phone_error"></span>
+          </div>
+          <div class="container_storage">
+            <h2>From which store did you buy the product:</h2>
+            <div class="container_check_storage">
+              <input
+                type="checkbox"
+                id="checkbox"
+                name="Storage Nord"
+                value="Nord"
+              />
+              <label for="Storage Nord">Storage Nord</label>
+              <input
+                type="checkbox"
+                id="checkbox"
+                name="Storage West"
+                value="West"
+              />
+              <label for="Storage West"> Storage West</label>
+              <input
+                type="checkbox"
+                id="checkbox"
+                name="Storage Sud"
+                value="Sud"
+              />
+              <label for="Storage Sud"> Storage Sud</label>
+            </div>
+          </div>
+          <div class="input_group">
+            <label>Text your Message</label>
+            <textarea rows="10" placeholder="write your text here"></textarea>
+          </div>
+          <button id="submit" type="submit">Submit</button>
+          <span id="submit_error"></span>
+          <div style="display: none" id="popup">thank you</div>
+        </form>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
