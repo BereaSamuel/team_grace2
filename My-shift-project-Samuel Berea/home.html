@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="home.css" />
+    <script
+      src="https://kit.fontawesome.com/2b5a6d05cb.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>My-shift-project-home</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Navbar -->
+      <div class="container_navbar">
+        <ul>
+          <li class="aboutus">
+            <i class="fa-sharp fa-solid fa-person-digging"></i>B.S.B
+          </li>
+          <li class="myshift" onclick="myShiftFunction()">My Shifts</li>
+          <li class="curentshift">Current Shifts</li>
+          <li class="searchbtn">
+            <i
+              class="fa-solid fa-magnifying-glass searchbtni"
+              id="searchbtn"
+            ></i>
+            <input type="text" id="search" class="search" />
+          </li>
+          <li class="editprofil">
+            <i class="fa-solid fa-user-pen"></i>Edit profile
+          </li>
+          <li class="userlogin_cont">
+            <i class="fa-regular fa-user">:</i>
+            <p id="userlogin"></p>
+          </li>
+          <li id="logoutbtn">
+            <i class="fa-solid fa-right-from-bracket"></i>Log out
+          </li>
+        </ul>
+      </div>
+
+      <!-- My shift container -->
+
+      <div class="myshift_container" style="display: none">
+        <div class="date">Date: <input type="date" id="mydate" /></div>
+        <div class="starttime">
+          Start time:<input type="time" id="starttime" />
+        </div>
+        <div class="endtime">End time:<input type="time" id="endtime" /></div>
+        <div class="iduniq">
+          <button class="adduniqnr" type="submit">ID:</button>
+          <p id="displayuniqid" class="labelid"></p>
+        </div>
+        <div class="hourswage">
+          Hours Wage:<input type="text" id="hourswage" />
+        </div>
+        <div>
+          Shift place:
+          <select class="shiftplace" id="shiftplace">
+            <option>First shift</option>
+            <option>Second shift</option>
+            <option>Third shift</option>
+          </select>
+        </div>
+        <div class="profit" id="profit"></div>
+        <div>Comment: <input type="text" id="comment" /></div>
+        <div class="image_icon addtheshift">
+          <button class="addbutton">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- table and best month -->
+
+      <div
+        id="container_table_bestmonth"
+        class="container_table_bestmonth"
+        style="display: none"
+      >
+        <table id="displaytabel" class="displaytable">
+          <tr>
+            <th>Date</th>
+            <th>Start time</th>
+            <th>End time</th>
+            <th>ID</th>
+            <th>Hours wage</th>
+            <th>Shift place</th>
+            <th>Total profit</th>
+            <th>Comment</th>
+            <th>
+              <div class="image_iconn edit">
+                <i class="fa-solid fa-pen-to-square"></i>
+                Edit
+              </div>
+            </th>
+            <th>
+              <div class="image_iconn delete">
+                <i class="fa-sharp fa-solid fa-trash"> </i>Delete
+              </div>
+            </th>
+          </tr>
+        </table>
+        <div class="bestmonth" id="bestmonth">
+          <i class="fa-solid fa-money-bill-1-wave monthprofit"></i>
+          <input
+            type="text"
+            class="displaymonthprofit"
+            id="displaymonthprofit"
+            readonly
+          />
+        </div>
+      </div>
+
+      <!-- Modal content -->
+
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="myshift_containermodal">
+            <div class="date">
+              Date:
+              <input type="date" id="mydatemodal" class="input_fieldmodal" />
+            </div>
+            <div class="starttime">
+              Start time:<input
+                type="time"
+                id="starttimemodal"
+                class="input_fieldmodal"
+              />
+            </div>
+            <div class="endtime">
+              End time:<input
+                type="time"
+                id="endtimemodal"
+                class="input_fieldmodal"
+              />
+            </div>
+            <div class="iduniq">
+              <button
+                class="modaladduniqnr"
+                type="submit"
+                class="input_fieldmodal"
+              >
+                ID:
+              </button>
+              <p
+                id="modaldisplayuniqid"
+                class="labelid"
+                class="input_fieldmodal"
+              ></p>
+            </div>
+            <div class="hourswage">
+              Hours Wage:<input
+                type="text"
+                id="hourswagemodal"
+                class="input_fieldmodal"
+              />
+            </div>
+
+            <div>
+              Shift place:
+              <select
+                class="shiftplace"
+                id="shiftplacemodal"
+                class="input_fieldmodal"
+              >
+                <option>First shift</option>
+                <option>Second shift</option>
+                <option>Third shift</option>
+              </select>
+            </div>
+            <div class="profit">
+              Total profit:<input
+                type="text"
+                id="profitmodal"
+                class="input_fieldmodal"
+              />
+            </div>
+            <div>
+              Comment:
+              <input type="text" id="commentmodal" class="input_fieldmodal" />
+            </div>
+            <div class="image_icon addtheshift">
+              <button class="updatebutton">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edit container -->
+
+      <div class="edit_container" style="display: none">
+        <div class="input_field">
+          <input
+            class="fullname"
+            id="fullname"
+            onkeyup="validateFullName()"
+            type="text"
+            placeholder="Please enter your full name"
+            required
+          />
+          <i class="fa-solid fa-user"></i>
+          <span class="error" id="errorname"></span>
+        </div>
+        <!-- Age -->
+        <div class="input_field">
+          <input
+            class="age"
+            id="age"
+            onkeyup="validateAge()"
+            type="text"
+            placeholder="Please write you age"
+            required
+          />
+          <i class="fa-solid fa-user"></i>
+          <span class="error" id="age_error"></span>
+        </div>
+        <!-- Email -->
+        <div class="input_field">
+          <input
+            class="emailadress"
+            type="text"
+            placeholder="Please enter your email"
+            onkeyup="validateEmail()"
+            id="emailadress"
+            required
+          />
+          <i class="fa-solid fa-envelope"></i>
+          <span class="error" id="email_error"></span>
+        </div>
+        <!-- username -->
+        <div class="input_field username">
+          <input
+            class="usernamee"
+            id="username"
+            onkeyup="validateUser()"
+            type="text"
+            placeholder="Please write you username"
+            required
+          />
+          <i class="fa-solid fa-user"></i>
+          <span class="error" id="user_error"></span>
+        </div>
+        <!-- password -->
+        <div class="input_field">
+          <input
+            id="password"
+            class="password passwordd"
+            type="password"
+            placeholder="Create a password"
+            required
+            onkeyup="validate_firstpassword()"
+          />
+          <i class="fa-solid fa-lock icon"></i>
+          <span class="errorpass" id="passerror"></span>
+          <i class="fa-regular fa-eye-slash showhidepw"></i>
+        </div>
+        <!-- repeat password -->
+        <div class="input_field">
+          <input
+            class="password"
+            id="repeatpassword"
+            type="password"
+            onkeyup="validate_password()"
+            placeholder="Confirm your password"
+            required
+          />
+          <i class="fa-solid fa-lock icon"></i>
+          <span class="errorpass" id="passerrorrepeat"></span>
+          <i class="fa-regular fa-eye-slash showhidepw"></i>
+        </div>
+        <div class="input_field btn">
+          <input type="button" value="Update" class="updatebtn" />
+        </div>
+      </div>
+    </div>
+    <script src="home.js"></script>
+  </body>
+</html>

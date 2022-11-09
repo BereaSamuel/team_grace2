@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="myshift.css" />
+    <script
+      src="https://kit.fontawesome.com/2b5a6d05cb.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>My-shift-project</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="forms">
+        <!-- Log-in -->
+        <div class="form login">
+          <span class="title">Log-in</span>
+          <!-- username -->
+          <form id="form" action="#">
+            <div class="input_field username_login">
+              <input
+                id="username_login"
+                type="text"
+                placeholder="Please enter your username"
+                required
+              />
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <!-- password -->
+            <div class="input_field password_login">
+              <input
+                id="password_login"
+                class="password"
+                type="password"
+                placeholder="Please enter your password"
+                required
+              />
+              <i class="fa-solid fa-lock icon"></i>
+              <i class="fa-regular fa-eye-slash showhidepw"></i>
+            </div>
+            <!-- checkbox and forgot password -->
+            <div class="checkbox_text forgotpsw">
+              <a href="#" class="text">Forgot password?</a>
+            </div>
+          </form>
+          <div class="input_field btn">
+            <input type="button" value="Log-in" class="login" id="login" />
+          </div>
+          <!-- sigup now -->
+          <div class="span_signup">
+            <span class="text"
+              >Not a member?
+              <a href="#" class="text signup_text">Sign-up now!</a>
+            </span>
+          </div>
+
+          <!-- Delete account password -->
+
+          <div class="delete" id="delete">
+            <span class="close">&times;</span>
+            <div class="input_field username_login">
+              <input
+                id="username_logindelete"
+                type="text"
+                placeholder="Please enter your username"
+                required
+              />
+              <i class="fa-solid fa-user"></i>
+              <span class="error" id="userexisterrordelete"></span>
+            </div>
+            <!-- password for delete storage -->
+            <div class="input_field">
+              <input
+                id="passworddelete"
+                class="password passworddelete"
+                type="password"
+                placeholder="Create a password"
+                required
+                onkeyup="validate_firstpassworddelete()"
+              />
+              <i class="fa-solid fa-lock icon"></i>
+              <span class="errorpass" id="passerrordelete"></span>
+              <i class="fa-regular fa-eye-slash showhidepw"></i>
+            </div>
+            <!-- repeat password for delete storage-->
+            <div class="input_field">
+              <input
+                class="password passworddeletesecond"
+                id="repeatpassworddelete"
+                type="password"
+                onkeyup="validate_passworddelete()"
+                placeholder="Confirm your password"
+                required
+              />
+              <i class="fa-solid fa-lock icon"></i>
+              <span class="errorpass" id="passerrorrepeatdelete"></span>
+              <i class="fa-regular fa-eye-slash showhidepw"></i>
+            </div>
+            <button id="deletestorage" class="deletestorage">
+              Reset password
+            </button>
+          </div>
+        </div>
+        <!-- Registration -->
+
+        <div class="form signup">
+          <span class="title">Registration</span>
+          <form class="formregistration" id="formregistration">
+            <!-- Fullname -->
+            <div class="input_field">
+              <input
+                class="fullname"
+                id="fullname"
+                onkeyup="validateFullName()"
+                type="text"
+                placeholder="Please enter your full name"
+                required
+              />
+              <i class="fa-solid fa-user"></i>
+              <span class="error" id="errorname"></span>
+            </div>
+            <!-- Age -->
+            <div class="input_field">
+              <input
+                class="age"
+                id="age"
+                onkeyup="validateAge()"
+                type="text"
+                placeholder="Please write you age"
+                required
+              />
+              <i class="fa-solid fa-user"></i>
+              <span class="error" id="age_error"></span>
+            </div>
+            <!-- Email -->
+            <div class="input_field">
+              <input
+                class="emailadress"
+                type="text"
+                placeholder="Please enter your email"
+                onkeyup="validateEmail()"
+                id="emailadress"
+                required
+              />
+              <i class="fa-solid fa-envelope"></i>
+              <span class="error" id="email_error"></span>
+            </div>
+            <!-- username -->
+            <div class="input_field username">
+              <input
+                class="usernamee"
+                id="username"
+                onkeyup="validateUser()"
+                type="text"
+                placeholder="Please write you username"
+                required
+              />
+              <i class="fa-solid fa-user"></i>
+              <span class="error" id="user_error"></span>
+            </div>
+            <!-- password -->
+            <div class="input_field">
+              <input
+                id="password"
+                class="password passwordd"
+                type="password"
+                placeholder="Create a password"
+                required
+                onkeyup="validate_firstpassword()"
+              />
+              <i class="fa-solid fa-lock icon"></i>
+              <span class="errorpass" id="passerror"></span>
+              <i class="fa-regular fa-eye-slash showhidepw"></i>
+            </div>
+            <!-- repeat password -->
+            <div class="input_field">
+              <input
+                class="password"
+                id="repeatpassword"
+                type="password"
+                onkeyup="validate_password()"
+                placeholder="Confirm your password"
+                required
+              />
+              <i class="fa-solid fa-lock icon"></i>
+              <span class="errorpass" id="passerrorrepeat"></span>
+              <i class="fa-regular fa-eye-slash showhidepw"></i>
+            </div>
+            <div class="input_field btn">
+              <input
+                type="button"
+                value="Create account"
+                class="submitbtn"
+                onkeyup=" registredLocalStorage()"
+              />
+              <div><span id="submit_error" class="submit_error"></span></div>
+            </div>
+          </form>
+          <div class="span_signup">
+            <span class="text"
+              >Already member?
+              <a href="#" class="text login_link">Log-in now!</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="myshift.js"></script>
+  </body>
+</html>
